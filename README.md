@@ -1,18 +1,17 @@
-# Livro Digital - Produção de Textos
+# Rumo à Redação Nota 1000
 
-Aplicação web interativa para ensino de produção textual, desenvolvida com React e TypeScript. O projeto apresenta um livro digital com capítulos sobre notícias e fábulas, incluindo questões interativas, visão do professor e recursos responsivos para mobile e desktop.
+Aplicação web interativa para produção textual no Ensino Médio, desenvolvida com React e TypeScript. O material conduz o aluno na redação de um **e-mail** com proposta contextualizada, espaço para rascunho, folha de redação pautada, autoavaliação por critérios e download em PDF.
 
-## 🚀 Tecnologias
+## Tecnologias
 
-- **React 18** - Biblioteca para construção de interfaces
-- **TypeScript** - Tipagem estática
-- **Vite** - Build tool e dev server
-- **Tailwind CSS** - Estilização responsiva
-- **jsPDF** - Geração de PDFs
-- **html2canvas** - Captura de elementos para PDF
-- **localStorage** - Persistência de dados e posição de scroll
+- **React 18** — Interface do usuário
+- **TypeScript** — Tipagem estática
+- **Vite** — Build tool e servidor de desenvolvimento
+- **Tailwind CSS** — Estilização responsiva
+- **jsPDF** — Geração de PDF do rascunho e da redação final
+- **localStorage** — Persistência de textos, respostas e posição de scroll
 
-## 📦 Instalação
+## Instalação
 
 ```bash
 # Instalar dependências
@@ -28,223 +27,158 @@ npm run build
 npm run typecheck
 ```
 
-## 🏗️ Estrutura do Projeto
+Acesse `http://localhost:5173` após iniciar o servidor de desenvolvimento.
+
+## Estrutura do projeto
 
 ```
 src/
-├── components/          # Componentes React
-│   ├── shared/         # Componentes base reutilizáveis
-│   │   ├── CorrectAnswerDisplay.tsx
-│   │   └── QuestionWrapper.tsx
-│   ├── Book.tsx        # Componente principal do livro
-│   ├── Chapter.tsx     # Componente de capítulo
-│   ├── Header.tsx       # Cabeçalho do livro
-│   ├── Footer.tsx       # Rodapé do livro
-│   ├── Pagination.tsx   # Componente de paginação
-│   ├── TeacherButton.tsx # Botão para visão do professor
-│   ├── QuestionRenderer.tsx # Renderizador de questões
-│   ├── QuestionTableFill.tsx # Tabelas de preenchimento
-│   ├── CriteriosAvaliacao.tsx # Tabela de critérios
-│   └── ...
-├── constants/          # Constantes e configurações
-│   └── colors.ts       # Cores e estilos centralizados
-├── data/               # Dados das questões
-│   └── questions.ts
-├── hooks/              # Hooks customizados
-│   ├── useUserAnswers.ts # Gerenciamento de respostas
-│   ├── usePagination.ts # Gerenciamento de paginação
-│   └── useScrollPosition.ts # Persistência de scroll
-├── types/              # Definições TypeScript
-│   └── questions.ts
-└── utils/              # Funções utilitárias
-    ├── questionHelpers.tsx
-    ├── pdf.ts
-    └── storage.ts
+├── components/
+│   ├── Book.tsx              # Página principal do livro digital
+│   ├── Chapter.tsx           # Container de conteúdo (props opcionais)
+│   ├── Header.tsx            # Cabeçalho com capa e título
+│   ├── Footer.tsx            # Rodapé institucional
+│   ├── Pagination.tsx        # Indicador de página no fluxo de leitura
+│   ├── RascunhoTexto.tsx     # Área de rascunho com folha pautada
+│   ├── ProducaoTextoFinal.tsx # Folha de redação final (15–20 linhas)
+│   ├── FolhaPautada.tsx      # Textarea pautada com contador de linhas
+│   ├── GradeCorrecao.tsx     # Título da seção de correção
+│   ├── CriteriosAvaliacao.tsx # Rubrica de avaliação (notas 0, 1 e 2)
+│   └── DownloadButton.tsx    # Botão de download em PDF
+├── hooks/
+│   ├── useUserAnswers.ts     # Respostas da rubrica no localStorage
+│   ├── usePagination.ts      # Detecção da página visível no scroll
+│   └── useScrollPosition.ts  # Restauração da posição de scroll
+├── lib/
+│   └── publicUrl.ts          # Caminhos de assets da pasta public
+├── types/
+│   └── questions.ts          # Tipo UserAnswers
+├── utils/
+│   └── storage.ts            # Leitura/gravação no localStorage
+├── App.tsx
+├── main.tsx
+└── index.css
 ```
 
-## ✨ Funcionalidades
+## Funcionalidades
 
-### Para Alunos
-- 📖 Leitura interativa de capítulos sobre notícias e fábulas
-- ✍️ Questões interativas: múltipla escolha, verdadeiro/falso, texto livre e tabelas
-- 💾 Salvamento automático de respostas no localStorage
-- 📄 Download de questões em PDF
-- 📱 Interface totalmente responsiva para mobile e desktop
-- 🔄 Persistência de posição de scroll (volta exatamente onde parou)
+### Proposta de produção textual
+- Enunciado com três opções de e-mail (prefeitura, jornal local ou colegas)
+- Orientação de extensão: entre **15 e 20 linhas**
+- Assinatura obrigatória: *Equipe de Bem-Estar Comunitário da Rumo à Redação Nota 1000*
 
-### Para Professores
-- 👨‍🏫 Visão do professor com respostas corretas
-- 📋 Botão "Para o Professor" com orientações pedagógicas
-- 📥 Download de gabarito em PDF
-- ✅ Exibição de respostas corretas nas questões
+### Rascunho (`RascunhoTexto`)
+- Folha pautada com numeração de linhas
+- Contador de linhas em tempo real
+- Salvamento automático no `localStorage` (por `instanceId`)
+- Download do rascunho em PDF
 
-## 🎯 Componentes Principais
+### Folha de redação (`ProducaoTextoFinal`)
+- Folha pautada com contador de linhas
+- Indicação visual quando o texto está abaixo, dentro ou acima da meta (15–20 linhas)
+- Salvamento automático e download em PDF
 
-- **Book.tsx** - Componente principal que renderiza todo o livro
-- **Chapter.tsx** - Componente para capítulos do livro
-- **Header.tsx** - Cabeçalho com título e informações do livro
-- **Footer.tsx** - Rodapé com logo e informações da editora
-- **Pagination.tsx** - Componente de paginação visual
-- **QuestionRenderer.tsx** - Renderiza diferentes tipos de questões
-- **QuestionTableFill.tsx** - Tabelas interativas de preenchimento
-- **CriteriosAvaliacao.tsx** - Tabela de critérios de avaliação
-- **TeacherButton.tsx** - Botão modal com orientações para professores
-- **TeacherAnswers.tsx** - Exibe respostas corretas para professores
+### Grade de correção (`CriteriosAvaliacao`)
+- Rubrica com 5 critérios e níveis **0**, **1** e **2**
+- Autoavaliação com seleção de pontuação por critério
+- Respostas salvas automaticamente
 
-## 🔧 Hooks Customizados
+Critérios avaliados:
+1. Atendimento às exigências
+2. Adequação ao gênero
+3. Desenvolvimento do tema
+4. Adequação da linguagem
+5. Recursos coesivos
+
+### Navegação
+- Paginação visual ao longo do conteúdo (páginas 1 a 4)
+- A página 1 fica colada ao cabeçalho
+- Botão flutuante para voltar ao topo após a página 4
+- Posição de scroll restaurada ao recarregar
+
+## Componentes principais
+
+| Componente | Descrição |
+|---|---|
+| `Book.tsx` | Orquestra todo o fluxo da atividade |
+| `FolhaPautada.tsx` | Folha pautada reutilizável com contagem de linhas |
+| `RascunhoTexto.tsx` | Rascunho configurável (`instanceId`, título e nome do PDF) |
+| `ProducaoTextoFinal.tsx` | Versão final da redação com meta de linhas |
+| `CriteriosAvaliacao.tsx` | Tabela rubrica 0/1/2 por critério |
+
+## Hooks customizados
 
 ### `useUserAnswers()`
-Gerencia o estado e persistência das respostas do usuário no localStorage.
-
 ```tsx
 const { userAnswers, handleAnswerChange } = useUserAnswers();
 ```
-
-**Funcionalidades:**
-- Salva automaticamente as respostas no localStorage
-- Persiste entre sessões do navegador
-- Permite edição e atualização de respostas
+Gerencia e persiste as pontuações selecionadas na rubrica.
 
 ### `usePagination()`
-Gerencia a paginação baseada em scroll, detectando automaticamente a página atual visível.
-
 ```tsx
 const { currentPage, scrollToTop } = usePagination();
 ```
-
-**Funcionalidades:**
-- Detecta a página atual baseada na posição de scroll
-- Atualiza automaticamente conforme o usuário navega
-- Função `scrollToTop` para voltar ao início
+Detecta a página visível com base nos elementos `[data-page]` e oferece retorno ao topo.
 
 ### `useScrollPosition()`
-Persiste e restaura a posição de scroll do usuário.
-
 ```tsx
 useScrollPosition();
 ```
+Salva e restaura a posição de scroll entre sessões.
 
-**Funcionalidades:**
-- Salva a posição de scroll automaticamente
-- Restaura a posição ao recarregar a página
-- Funciona mesmo após fechar e reabrir o navegador
-- Salva ao sair da página ou ocultar a aba
-
-## 📝 Tipos de Questões
-
-O projeto suporta 5 tipos de questões interativas:
-
-1. **Multiple Choice** - Escolha única (a, b, c, d)
-   - Radio buttons com feedback visual
-   - Suporte a múltiplas alternativas
-
-2. **True/False** - Verdadeiro ou Falso
-   - Com statements opcionais para contexto
-   - Interface simples e intuitiva
-
-3. **Alternative** - Escolha única com múltiplas opções
-   - Similar a múltipla escolha com layout customizado
-   - Suporte a imagens e textos longos
-
-4. **Text Input** - Resposta em texto livre
-   - Textarea para respostas longas
-   - Suporte a subquestões opcionais
-   - Placeholder e validação
-
-5. **Table Fill** - Preenchimento de tabelas
-   - Tabelas interativas com múltiplas colunas
-   - Textareas em cada célula editável
-   - Totalmente responsivo para mobile
-
-## 🎨 Personalização
-
-As cores e estilos estão centralizados em `src/constants/colors.ts`:
-
-```typescript
-import { COLORS, FONTS } from '../constants/colors';
-```
-
-### Cores Principais
-- **Primária**: `#0E3B5D` (Azul escuro)
-- **Secundária**: `#BF3154` (Vermelho/Magenta)
-- **Destaque**: `#00776E` (Verde água)
-- **Fundo**: `#EEE6D4` (Bege claro)
-
-### Fontes
-- **Títulos**: HWT Artz (custom font)
-- **Corpo**: Ubuntu (Google Fonts)
-
-## 📱 Responsividade
-
-O projeto foi desenvolvido com foco em responsividade:
-
-- ✅ Layout adaptativo para mobile, tablet e desktop
-- ✅ Tabelas responsivas com scroll horizontal quando necessário
-- ✅ Imagens que se ajustam ao tamanho da tela
-- ✅ Textos com tamanhos adaptativos
-- ✅ Navegação otimizada para touch devices
-- ✅ Breakpoints: Mobile (< 768px), Tablet (768px - 1024px), Desktop (> 1024px)
-
-## 📚 Otimizações Realizadas
-
-O código foi otimizado para eliminar repetições e melhorar a manutenibilidade:
-
-- ✅ Componentes helper reutilizáveis
-- ✅ Hooks customizados para lógica compartilhada
-- ✅ Constantes centralizadas
-- ✅ Redução de ~500+ linhas de código repetido
-- ✅ Persistência de estado e scroll
-- ✅ Performance otimizada com debounce e memoização
-
-Veja mais detalhes em [OPTIMIZATIONS.md](./OPTIMIZATIONS.md)
-
-## 🔄 Funcionalidades de Persistência
-
-### Salvamento Automático
-- **Respostas**: Salvas automaticamente no localStorage
-- **Posição de Scroll**: Restaurada ao recarregar a página
-- **Estado da Sessão**: Mantido entre navegações
-
-### Como Funciona
-1. O usuário responde questões → salvo automaticamente
-2. O usuário navega pela página → posição salva periodicamente
-3. Ao recarregar → respostas e posição são restauradas
-
-## 🛠️ Desenvolvimento
-
-### Scripts Disponíveis
+## Scripts disponíveis
 
 ```bash
-# Desenvolvimento com hot reload
-npm run dev
-
-# Build para produção
-npm run build
-
-# Preview do build de produção
-npm run preview
-
-# Verificação de tipos TypeScript
-npm run typecheck
-
-# Lint do código
-npm run lint
+npm run dev        # Desenvolvimento com hot reload
+npm run build      # Build para produção
+npm run preview    # Preview do build
+npm run typecheck  # Verificação de tipos
+npm run lint       # ESLint
+npm run deploy     # Publica em gh-pages (pasta dist)
 ```
 
-### Estrutura de Dados
+## Personalização
 
-As questões são definidas em `src/data/questions.ts` seguindo a estrutura:
+### Cores principais
+- **Roxo (header)**: `#80298F`
+- **Azul escuro**: `#0E3B5D`
+- **Magenta**: `#BF3154`
+- **Paginação**: `#fcefff`
 
-```typescript
-{
-  id: string;
-  type: 'multiple-choice' | 'true-false' | 'alternative' | 'text-input' | 'table-fill';
-  number?: number;
-  question: string;
-  // ... campos específicos por tipo
-}
+### Fontes
+- **Títulos**: HWT Artz (`public/fonts/`)
+- **Corpo**: Ubuntu (Google Fonts)
+
+### Adicionar nova instância de rascunho
+```tsx
+<RascunhoTexto
+  instanceId="meuRascunho"
+  title="RASCUNHO"
+  pdfTitle="RASCUNHO"
+  pdfFileName="rascunho.pdf"
+/>
 ```
 
-## 📄 Licença
+### Configurar rubrica de avaliação
+```tsx
+<CriteriosAvaliacao
+  instanceId="producao_final"
+  criterios={[
+    {
+      id: 'criterio_exemplo',
+      nome: 'Nome do critério',
+      niveis: {
+        0: 'Descrição nota 0',
+        1: 'Descrição nota 1',
+        2: 'Descrição nota 2',
+      },
+    },
+  ]}
+  userAnswers={userAnswers}
+  onAnswerChange={handleAnswerChange}
+/>
+```
+
+## Licença
 
 Este projeto é de uso educacional e faz parte de material didático da Companhia Brasileira de Educação e Sistemas de Ensino S.A.
