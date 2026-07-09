@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: 'hwt-artz", sans-serif';
+  src: url('/fonts/HWT-Artz.woff2') format('woff2'),
+    url('/fonts/HWT-Artz.woff') format('woff'),
+    url('/fonts/HWT-Artz.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.chapter-content h3 {
+  border-left: 6px solid #80298F;
+  padding-left: 14px;
+  margin-bottom: 24px;
+  color: #000;
+  font-family: Filson Soft, Filson Pro, sans-serif;
+  font-size: 29px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.chapter-content h4 {
+  color: #000000;
+  font-family: 'hwt-artz', sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding: 10px 0;
+}
+
+.chapter-content p,
+.chapter-content li,
+.texto-corrido p {
+  color: black;
+  font-family: 'Ubuntu', 'sans-serif';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+/* Estilo para bullets coloridos nas subquestões */
+ul.question-subitems li::marker {
+  color: #BF3154;
+}
+
+/* Remove text-justify de todas as células de tabela */
+td {
+  text-align: left;
+}
