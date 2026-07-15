@@ -101,7 +101,8 @@ flowchart LR
 | Entrada | `src/main.tsx` → `App.tsx` | Monta `<Book />` |
 | Orquestração | `src/components/Book.tsx` | Conteúdo + seções interativas |
 | Escrita | `FolhaPautada`, `RascunhoTexto`, `ProducaoTextoFinal` | Folha pautada + PDF |
-| Avaliar | `CriteriosAvaliacao`, `GradeCorrecao` | Rubrica 0–2 |
+| Avaliar | `CriteriosAvaliacao`, `ChecklistAutoavaliacao`, `GabaritoOnlineBanner`, `GradeCorrecao` | Rubrica, checklist e faixa de gabarito |
+| Glossário | `TermoGlossario` | Termo clicável + popover de significado |
 | Shell | `Header`, `Footer`, `Pagination`, `Chapter` | Identidade e paginação visual |
 | Estado | `hooks/useUserAnswers`, `usePagination`, `useScrollPosition` | Sessão no cliente |
 | Persistência | `utils/storage.ts` | Read/write `book_answers` |
@@ -147,11 +148,14 @@ Não há SGBD. O “modelo de dados” atual é:
 - ⚠️ `usePagination` observa o `body` via `MutationObserver` (custo de scroll).
 - ⚠️ Tutorial/QR usa URL placeholder.
 
-### Rubrica (estado atual)
+### Rubrica e checklist (estado atual)
 
 - 5 critérios em `Book.tsx` → `CriteriosAvaliacao` (`instanceId: producao_final`)
 - Gênero: dissertativo-argumentativo (tese, argumentação, conclusão)
 - Extensão referida na rubrica: **15–20 linhas** (ainda a unificar com a proposta)
+- `ChecklistAutoavaliacao`: componente reutilizável; itens via props; checks em `book_answers` com chave `${instanceId}_${item.id}` (boolean)
+- `GabaritoOnlineBanner`: faixa roxa com QR + título/itens via props (`prefix` + `text`); QR clicável opcional (`href`)
+- `TermoGlossario`: termo clicável com popover; props `termo` + `significado` (reutilizável)
 
 ---
 

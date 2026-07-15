@@ -5,6 +5,9 @@ import RascunhoTexto from './RascunhoTexto';
 import GradeCorrecao from './GradeCorrecao';
 import ProducaoTextoFinal from './ProducaoTextoFinal';
 import CriteriosAvaliacao from './CriteriosAvaliacao';
+import ChecklistAutoavaliacao from './ChecklistAutoavaliacao';
+import GabaritoOnlineBanner from './GabaritoOnlineBanner';
+import TermoGlossario from './TermoGlossario';
 import Footer from './Footer';
 import { useUserAnswers } from '../hooks/useUserAnswers';
 import { usePagination } from '../hooks/usePagination';
@@ -84,7 +87,7 @@ function Book() {
                   Produzir um texto não é apenas organizar palavras em uma folha, mas sim exercer
                   sua cidadania e agir sobre a realidade social em que você vive. O gênero que guia o
                   Exame Nacional do Ensino Médio (Enem) e os principais processos seletivos do país
-                  é o <strong>dissertativo-argumentativo</strong>, uma unidade em <strong style={{ color: '#8c2f88' }}>prosa</strong> que exige o desenvolvimento de uma tese central sustentada por uma progressão lógica de argumentos.
+                  é o <strong>dissertativo-argumentativo</strong>, uma unidade em <TermoGlossario termo="prosa" significado="Prosa é a forma de escrita em parágrafos e períodos." /> que exige o desenvolvimento de uma tese central sustentada por uma progressão lógica de argumentos.
                 </p>
                 <p className="mb-4 indent-6">
                   Produzir um texto não é apenas organizar palavras em uma folha, mas sim exercer sua cidadania e agir sobre a realidade social em que você vive. O gênero que guia
@@ -92,11 +95,11 @@ function Book() {
                   país é o dissertativo-argumentativo, uma unidade em prosa que exige o desenvolvimento de uma tese central sustentada por uma progressão lógica de argumentos.
                 </p>
                 <p className="mb-4 indent-6">
-                  Sob a <strong style={{ color: '#8c2f88' }}>perspectiva sociointeracionista da linguagem</strong>, a língua não é um
+                  Sob a <TermoGlossario termo="perspectiva sociointeracionista da linguagem" significado="A perspectiva sociointeracionista da linguagem entende a língua como uma ferramenta de interação social e construção de conhecimento, não apenas um sistema de regras." />, a língua não é um
                   sistema estático de regras gramaticais, mas um meio de ação. Quando você escreve
                   uma redação, você está dialogando com um interlocutor global e racional, buscando
                   convencê-lo sobre a validade do seu ponto de vista. Diferente de gêneros puramente
-                  informativos, como a notícia, em que o autor apenas relata fatos, na <strong>dissertação-argumentativa</strong> é necessário assumir um posicionamento assertivo diante de uma
+                  informativos, como a notícia, em que o autor apenas relata fatos, na <TermoGlossario termo="dissertação-argumentativa" significado="Dissertar significa explicar, discutir e aprofundar o tema proposto, enquanto argumentar consiste em utilizar análises críticas e evidências para validar sua tese." /> é necessário assumir um posicionamento assertivo diante de uma
                   situação-problema de ordem social, científica, cultural ou política.
                 </p>
                 <p className="mb-4 indent-6">
@@ -530,56 +533,54 @@ function Book() {
                   nossa análise, utilizaremos como base a redação de Isabella Barros Castelo Branco, que obteve nota máxima no
                   Enem 2017, cujo tema foi “Desafios para a formação educacional de surdos no Brasil”.
                 </p>
+                <h3>Texto base para análise:</h3>
                 <div
+                  className="mx-auto my-5 grid w-full max-w-[940px] grid-cols-1 gap-3 lg:grid-cols-[160px_minmax(0,580px)_160px] lg:items-start lg:justify-center lg:gap-5"
                   style={{
-                    width: '100%',
-                    maxWidth: 940,
-                    margin: '20px auto',
-                    position: 'relative',
                     fontFamily: 'Arial, sans-serif',
                     fontSize: 14,
                     color: '#1a1a1a',
                   }}
                 >
+                  {/* Legenda roxa — esquerda no desktop; depois da carta no mobile */}
+                  <aside
+                    className="order-2 self-start p-3 text-[13px] leading-snug text-black lg:order-none lg:col-start-1 lg:sticky lg:top-4"
+                    style={{ backgroundColor: '#ccadd3' }}
+                  >
+                    Magni ulpa quodi sendit voluptur? Udae volorro volorec
+                    atusdae cepernat enet es et qui volorae doluptas eos
+                    rerit lam hilicidem nis expedic iderum qui bearupt
+                    atquosani del ilis minus.
+                    <br />
+                    ipic tem reped mo omnissi mustior alissitatio.
+                    ItaspieneDolorionet laut vendis eossequo optatium
+                    quibearum essin cuptatqui dolut fugia velenit iostemo
+                    in ea coreperiam, samus rem elicia verchitist quae
+                    dolorios solupta intiandipsa conserro consequ aectore
+                    henimin etur? Quid evendistrum quatioria dolut hit
+                    is cus isitat.cum antionsecaes mo ex et audanim oluptat.
+                  </aside>
+
+                  {/* Carta / redação */}
                   <div
+                    className="order-1 relative w-full border-2 border-[#3c1a5b] bg-white p-4 sm:p-6 lg:order-none lg:col-start-2 lg:p-[30px]"
                     style={{
-                      width: '100%',
-                      maxWidth: 580,
-                      marginLeft: 180,
-                      border: '2px solid #3c1a5b',
-                      padding: 30,
                       fontFamily: "'Times New Roman', Times, serif",
                       fontSize: 16,
                       lineHeight: 1.6,
                       textAlign: 'justify',
-                      position: 'relative',
-                      backgroundColor: '#ffffff',
                     }}
                   >
                     <div
-                      style={{
-                        position: 'absolute',
-                        top: 78,
-                        left: 0,
-                        width: 200,
-                        borderBottom: '2px dotted #a0589e',
-                        zIndex: 1,
-                      }}
+                      className="pointer-events-none absolute z-[1] hidden border-b-2 border-dotted border-[#a0589e] lg:block"
+                      style={{ top: 78, left: 0, width: 200 }}
                     />
-
                     <div
-                      style={{
-                        position: 'absolute',
-                        bottom: 42,
-                        left: 160,
-                        width: 420,
-                        borderBottom: '2px dotted #caad7e',
-                        zIndex: 1,
-                      }}
+                      className="pointer-events-none absolute z-[1] hidden border-b-2 border-dotted border-[#caad7e] lg:block"
+                      style={{ bottom: 42, left: 160, width: 420 }}
                     />
 
-
-                    <div style={{ marginBottom: 15, position: 'relative', zIndex: 2 }}>
+                    <div className="relative z-[2] mb-4">
                       <span style={{ backgroundColor: '#ccadd3' }}>
                         “Na mitologia grega, Sísifo foi condenado pelos
                         deuses a empurrar uma pedra até o topo de uma
@@ -597,8 +598,9 @@ function Book() {
                       </span>
                     </div>
 
-                    <div style={{ marginTop: 30, position: 'relative', zIndex: 2 }}>
-                      <span style={{ backgroundColor: '#fdd99e' }}>Atenciosas Em primeira análise, é fundamental destacar
+                    <div className="relative z-[2] mt-6">
+                      <span style={{ backgroundColor: '#fdd99e' }}>
+                        Atenciosas Em primeira análise, é fundamental destacar
                         que a insuficiência de infraestrutura nas instituições
                         de ensino compromete o aprendizado dos deficien
                         tes auditivos. Embora a Lei nº 13.146/2015 assegure
@@ -611,136 +613,345 @@ function Book() {
                         como um microssistema social que prepara o indiví
                         duo para a vida coletiva; contudo, se esse ambiente
                         é excludente, o Estado falha em seu papel primordial
-                        de garantir o direito à educação.</span><br />
-                      <span style={{ backgroundColor: '#fdd99e' }}>Ademais, a mentalidade coletiva brasileira, </span>
+                        de garantir o direito à educação.
+                      </span>
+                      <br />
+                      <span style={{ backgroundColor: '#fdd99e' }}>
+                        Ademais, a mentalidade coletiva brasileira,{' '}
+                      </span>
                     </div>
                   </div>
 
+                  {/* Legenda laranja — direita no desktop; no fim no mobile */}
+                  <aside
+                    className="order-3 self-start p-3 text-[13px] leading-snug text-black lg:order-none lg:col-start-3 lg:self-end"
+                    style={{ backgroundColor: '#fdd99e' }}
+                  >
+                    Despedida e identificação do remetente.
+                  </aside>
+                </div>
+
+                <Pagination currentPage={11} />
+                <div
+                  className="mx-auto my-5 grid w-full max-w-[940px] grid-cols-1 gap-3 lg:grid-cols-[160px_minmax(0,580px)_160px] lg:items-start lg:justify-center lg:gap-5"
+                  style={{
+                    fontFamily: 'Arial, sans-serif',
+                    fontSize: 14,
+                    color: '#1a1a1a',
+                  }}
+                >
+                  {/* Legenda roxa — esquerda no desktop; depois da carta no mobile */}
+                  <aside
+                    className="order-2 self-start p-3 text-[13px] leading-snug text-black lg:order-none lg:col-start-1 lg:sticky lg:top-4"
+                    style={{ backgroundColor: '#a8c6b1' }}
+                  >
+                    Magni ulpa quodi sendit voluptur? Udae volorro volorec
+                    atusdae cepernat enet es et qui volorae doluptas eos
+                    rerit lam hilicidem nis expedic iderum qui bearupt
+                    atquosani del ilis minus.
+                    <br />
+                    ipic tem reped mo omnissi mustior alissitatio.
+                    ItaspieneDolorionet laut vendis eossequo optatium
+                    quibearum essin cuptatqui dolut fugia velenit iostemo
+                    in ea coreperiam, samus rem elicia verchitist quae
+                    dolorios solupta intiandipsa conserro consequ aectore
+                    henimin etur? Quid evendistrum quatioria dolut hit
+                    is cus isitat.cum antionsecaes mo ex et audanim oluptat.
+                  </aside>
+
+                  {/* Carta / redação */}
                   <div
-                    className="hidden lg:block"
+                    className="order-1 relative w-full border-2 border-[#3c1a5b] bg-white p-4 sm:p-6 lg:order-none lg:col-start-2 lg:p-[30px]"
                     style={{
-                      position: 'absolute',
-                      top: 35,
-                      left: 0,
-                      width: 160,
-                      backgroundColor: '#ccadd3',
-                      padding: '10px 15px',
-                      fontSize: 13,
-                      lineHeight: 1.4,
-                      color: '#000',
+                      fontFamily: "'Times New Roman', Times, serif",
+                      fontSize: 16,
+                      lineHeight: 1.6,
+                      textAlign: 'justify',
                     }}
+                  >
+                    <div
+                      className="pointer-events-none absolute z-[1] hidden border-b-2 border-dotted border-[#66a685] lg:block"
+                      style={{ top: 78, left: 0, width: 200 }}
+                    />
+                    <div
+                      className="pointer-events-none absolute z-[1] hidden border-b-2 border-dotted border-[#caad7e] lg:block"
+                      style={{ bottom: 42, left: 160, width: 420 }}
+                    />
+
+
+                    <div className="relative z-[2] mt-6">
+                      <span style={{ backgroundColor: '#fdd99e' }}>
+                        marcada por um viés capacitista, agrava a exclusão
+                        desse grupo. De acordo com o conceito de ‘Violência
+                        Simbólica’ de Pierre Bourdieu, as instituições sociais
+                        reproduzem padrões de dominação que silenciam as
+                        minorias. No caso dos surdos, a ausência de diálogo
+                        e o desconhecimento da Libras por parte da maioria da população criam barreiras comunicativas que
+                        impedem a integração social. Esse cenário é reforçado pela mídia que, muitas vezes, falha em representar a diversidade, tratando a surdez como uma
+                        limitação absoluta e não como uma característica
+                        identitária.[JK5.1]
+                      </span>
+                    </div>
+                    <div className="relative z-[2] mt-6">
+                      <span style={{ backgroundColor: '#a8c6b1' }}>
+                        Portanto, medidas são necessárias para mitigar esse impasse. Cabe ao Ministério da Educação
+                        ampliar o investimento em escolas bilíngues, por
+                        meio da contratação de intérpretes de Libras e da
+                        capacitação docente em todo o território nacional,
+                        com o intuito de garantir um ensino especializado
+                        e de qualidade. Paralelamente, as instituições de
+                        ensino, em parceria com as famílias, devem promover projetos pedagógicos que valorizem as diferenças e combatam o capacitismo. Somente assim, o
+                        Brasil poderá superar o castigo de Sísifo e assegurar a
+                        plena cidadania aos seus povos originários e surdos.”
+                      </span>
+                    </div>
+                    <div className="relative z-[2] mt-6">
+                      <span style={{ backgroundColor: '#acd5f3' }}>
+                        Rit es comnihit eosa cus et ant officiist, optaecte
+                        veliti sitio. Ilicaer chicienitam quatio. Musto con
+                        nis eturepudam hillam harumquod qui culpa es et
+                        quam, sant a et aut utecum fugia voluptis diti unt.
+                      </span>
+                    </div>
+                    <div className="relative z-[2] mt-6">
+                      <span style={{ backgroundColor: '#f6bed9' }}>
+                        Omnim num nectas eveles magnatum diorro
+                        riti ut que coreper rovitaq uoditem quid mi, ut que
+                        sequi res utempor estorpo rporiore corum reperiate
+                        quiatur? Ibeatem nit, suntur aut quasimo luptatis
+                        essi invendant ex et am, ventem ipic tenist optatis
+                        estrumet lam de pro experessum et landandit alig
+                        niae conet, temporessim qui abor sunt, nos enducip
+                        sunditibus.
+                      </span>
+                    </div>
+                    <div className="relative z-[2] mt-6">
+                      <span style={{ backgroundColor: '#fbf4ad' }}>
+                        Ci rae delignis duciissum quae pa porrovid ea
+                        quiam excepud andundempos ma idus sit od maior
+                        rovit fuga. Itatur, seque quia eaquis net, tem qui re
+                        voluptat ario doluptae voloreh endaeperum et alibus
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Legenda laranja — direita no desktop; no fim no mobile */}
+                  <aside
+                    className="order-3 self-start p-3 text-[13px] leading-snug text-black lg:order-none lg:col-start-3 lg:self-end"
+                    style={{ backgroundColor: '#fdd99e' }}
                   >
                     Magni ulpa quodi
                     sendit voluptur?
                     Udae volorro volorec
                     atusdae cepernat
-                    enet es et qui
-                    volorae doluptas eos
-                    rerit lam hilicidem
-                    nis expedic iderum
-                    qui bearupt
-                    atquosani del ilis
-                    minus. <br />ipic tem reped
-                    mo omnissi
-                    mustior alissitatio.
-                    ItaspieneDolorionet
-                    laut vendis
-                    eossequo optatium
-                    quibearum essin
-                    cuptatqui dolut
-                    fugia velenit iostemo
-                    in ea coreperiam,
-                    samus rem elicia
-                    verchitist quae
-                    dolorios solupta
-                    intiandipsa conserro
-                    consequ aectore
-                    henimin etur?
-                    Quid evendistrum
-                    quatioria dolut hit
-                    is cus isitat.cum
-                    antionsecaes mo ex
-                    et audanim oluptat.
-                  </div>
-
-                  <div
-                    className="hidden lg:block"
-                    style={{
-                      position: 'absolute',
-                      bottom: 30,
-                      left: 780,
-                      width: 160,
-                      backgroundColor: '#fdd99e',
-                      padding: '10px 15px',
-                      fontSize: 13,
-                      lineHeight: 1.4,
-                      color: '#000',
-                    }}
-                  >
-                    Despedida e identificação do remetente.
+                    enet es et qui volorae
+                    doluptas eos rerit lam
+                    hilicidem nis.
+                  </aside>
+                </div>
+                <Pagination currentPage={12} />
+                <h2>Proposta de Produção</h2>
+                <h3>O conto na era digital</h3>
+                <p className="mb-4 indent-6">
+                  Chegou o momento de você assumir o papel de contista. Nesta atividade, utilizaremos a estrutura da narrativa
+                  curta para refletir sobre como as tecnologias digitais moldam nossas relações e comportamentos cotidianos.
+                  Imagine a seguinte situação: a sua escola está organizando uma coletânea de contos inéditos produzidos por
+                  estudantes, com o objetivo de lançar um livro digital intitulado “Conexões e Desconexões”. Você foi selecionado
+                  para representar sua turma e deve escrever uma história que explore os impactos da vida on-line na subjetividade
+                  do jovem contemporâneo.
+                </p>
+                <p className="mb-4 indent-6" style={{ color: '#80298F', fontWeight: 'bold', fontSize: '20px' }}>Instruções para a escrita:</p>
+                {/* Imagem */}
+                <div className="flex flex-col items-center my-6">
+                  <img
+                    src="images/page_11_img_56_253.png"
+                    className="w-full max-w-[320px] sm:max-w-[380px] md:max-w-[480px] lg:max-w-[520px] h-auto"
+                  />
+                  <p className="text-[10px] text-slate-600 mt-2" style={{ fontSize: '10px' }}>stock.adobe.com
+                  </p>
+                  <div className="border-l-[2px] border-[#3b4394] pl-2 mb-1">
+                    <p className="text-[10px]" style={{ fontSize: '10px' }}>Eliquis del eatur? Quis sunt od ute exceatur?
+                      Gitatur,.
+                    </p>
                   </div>
                 </div>
+                <ol className="list-decimal marker:text-[#80298F] ml-6">
+                  <li> O texto deve ter no mínimo 20 e no máximo 30 linhas e possuir um título criativo que atraia o leitor. </li>
+                  <li> Siga obrigatoriamente a estrutura do gênero conto: apresente um enredo curto, personagens limitados e
+                    foque em um único conflito central. </li>
+                  <li> O tema deve obrigatoriamente ter relação com o eixo Cultura Digital e Sociedade. Você pode abordar, por
+                    exemplo, o vício em celular, a solidão nas redes sociais, as <em>fake news</em> ou a busca por aprovação virtual. </li>
+                  <li> Utilize a modalidade escrita padrão da língua portuguesa, permitindo marcas de coloquialidade apenas se
+                    forem necessárias para a caracterização de falas de personagens. </li>
+                  <li> Faça uso de elementos coesivos para garantir que a transição entre as cenas e o tempo da história seja
+                    clara e fluida. </li>
 
+                </ol>
+                <p className="mb-4 indent-6" style={{ color: '#80298F', fontWeight: 'bold', fontSize: '20px' }}>Roteiro de apoio para criação</p>
+                <ul className="list-disc marker:text-[#80298F] ml-6">
+                  <li> <strong>Protagonista:</strong> Quem é essa pessoa? Como ela se relaciona com a tecnologia no dia a dia?  </li>
+                  <li> <strong>Conflito:</strong> Qual evento rompe a rotina desse personagem? (Ex: a bateria acaba em um momento crucial;
+                    uma mensagem enviada por engano; o silêncio de uma notificação que não chega).  </li>
+                  <li> <strong>Espaço:</strong> Onde a história acontece? (Pode ser um quarto escuro, uma praça movimentada ou até o espaço
+                    virtual de um chat).  </li>
+                  <li> <strong>Desfecho:</strong> Como o conflito é resolvido? O final traz uma reflexão, uma surpresa ou deixa uma dúvida no ar?  </li>
 
-                <Pagination currentPage={16} />
-                <RascunhoTexto instanceId="producaoTexto1" />
-                <ProducaoTextoFinal />
-                <GradeCorrecao />
+                </ul>
+                <Pagination currentPage={13} />
+                <div style={{ border: '2px solid #27936a', padding: '10px', borderRadius: '5px' }}>
+                  <h4>Lembre-se:</h4>
+                  <p className="mb-4 indent-6">
+                    Em um conto, <strong>“menos é mais”</strong>. Selecione
+                    apenas as ações que são estritamente
+                    necessárias para levar o leitor ao clímax.
+                    Sua capacidade de selecionar informações
+                    e organizá-las de forma estratégica será o
+                    diferencial da sua narrativa.
+                  </p>
 
-                {/* Tabela de Critérios de Avaliação */}
-                <CriteriosAvaliacao
-                  instanceId="producao_final"
-                  criterios={[
-                    {
-                      id: 'atendimento_exigencias',
-                      nome: 'Atendimento às exigências',
-                      niveis: {
-                        0: 'O texto está fora da extensão pedida (menos de 15 ou mais de 20 linhas) e não atende às exigências formais da proposta de produção.',
-                        1: 'O texto está fora da extensão pedida (menos de 15 ou mais de 20 linhas) ou atende apenas parcialmente às exigências formais da proposta.',
-                        2: 'O texto possui entre 15 e 20 linhas e atende às exigências formais da proposta de produção.',
-                      },
-                    },
-                    {
-                      id: 'adequacao_genero',
-                      nome: 'Adequação ao gênero',
-                      niveis: {
-                        0: 'O texto não apresenta a estrutura do dissertativo-argumentativo, assemelhando-se a outros gêneros.',
-                        1: 'O texto apresenta parcialmente a estrutura do dissertativo-argumentativo (tese, argumentos e/ou conclusão), com desvios.',
-                        2: 'O texto apresenta a estrutura característica do dissertativo-argumentativo: tese central, argumentação e conclusão.',
-                      },
-                    },
-                    {
-                      id: 'desenvolvimento_tema',
-                      nome: 'Desenvolvimento do tema',
-                      niveis: {
-                        0: 'O texto não tematiza o tema proposto na proposta de produção.',
-                        1: 'O texto tematiza o tema proposto, mas de forma superficial, sem sustentar adequadamente a tese.',
-                        2: 'O texto tematiza adequadamente o tema proposto, desenvolvendo a tese com progressão argumentativa.',
-                      },
-                    },
-                    {
-                      id: 'adequacao_linguagem',
-                      nome: 'Adequação da linguagem',
-                      niveis: {
-                        0: 'A linguagem não está adequada à situação de produção do texto dissertativo-argumentativo.',
-                        1: 'A linguagem está parcialmente adequada à situação de produção, com alguns desvios de modalidade ou registro.',
-                        2: 'A linguagem está plenamente adequada à situação de produção, com poucos ou nenhum desvio de modalidade ou registro.',
-                      },
-                    },
-                    {
-                      id: 'recursos_coesivos',
-                      nome: 'Recursos coesivos',
-                      niveis: {
-                        0: 'Não há ou há uso precário de conectivos e recursos de coesão no texto.',
-                        1: 'Há uso mediano de conectivos e recursos de coesão no texto.',
-                        2: 'Há bom uso de conectivos e recursos de coesão, favorecendo a progressão lógica dos argumentos.',
-                      },
-                    },
-                  ]}
+                </div>
+                <RascunhoTexto instanceId="producaoTexto3" />
+
+                <Pagination currentPage={14} />
+                <h2>Proposta de Produção</h2>
+                <h3>Olhar crônico sobre a tecnologia</h3>
+                <p className="mb-4 indent-6">
+                  Chegou a hora de você exercitar sua capacidade de observação e escrita. Imagine que você é um dos membros
+                  do grêmio estudantil da sua escola, responsável pela curadoria e produção de conteúdo para o jornal impresso
+                  e digital da instituição. Ao notar como a tecnologia está onipresente nos corredores, nas salas de aula e até nos
+                  intervalos, você sugeriu como pauta do mês a escrita de uma crônica que aborde o impacto das tecnologias
+                  digitais na vida dos adolescentes. O objetivo é criar um texto que gere reflexão e identificação entre seus colegas, tratando o tema de forma criativa e bem estruturada.
+                </p>
+                <p className="mb-4 indent-6" style={{ color: '#80298F', fontWeight: 'bold', fontSize: '20px' }}>Instruções para a escrita:</p>
+                {/* Imagem */}
+                <div className="flex flex-col items-center my-6">
+                  <img
+                    src="images/page_13_img_56_254.png"
+                    className="w-full max-w-[320px] sm:max-w-[380px] md:max-w-[480px] lg:max-w-[520px] h-auto"
+                  />
+                  <p className="text-[10px] text-slate-600 mt-2" style={{ fontSize: '10px' }}>stock.adobe.com
+                  </p>
+                  <div className="border-l-[2px] border-[#3b4394] pl-2 mb-1">
+                    <p className="text-[10px]" style={{ fontSize: '10px' }}>Eliquis del eatur? Quis sunt od ute exceatur?
+                      Gitatur,.
+                    </p>
+                  </div>
+                </div>
+                <ol className="list-decimal marker:text-[#80298F] ml-6">
+                  <li> O texto deve ter no mínimo 20 e no máximo 30 linhas e possuir um título atraente.  </li>
+                  <li> A abordagem é livre, mas deve obrigatoriamente estar relacionada ao uso de tecnologias digitais
+                    na sociedade, focando em algo próximo do cotidiano escolar (ex: o uso do celular durante as aulas,
+                    a pressão por curtidas, os grupos de mensagem da turma, o impacto das fakes news no ambiente
+                    estudantil etc.).  </li>
+                  <li> Utilize a primeira pessoa (se quiser um tom mais pessoal/relato) ou a terceira pessoa (para um tom de
+                    observador).  </li>
+                  <li> Empregue a modalidade padrão da língua portuguesa, mas mantenha a leveza e a proximidade
+                    características do gênero.  </li>
+                  <li> Utilize uma variedade de conectivos e elementos de referência para garantir a coesão e evitar
+                    repetições.  </li>
+                </ol>
+                <Pagination currentPage={15} />
+                <ChecklistAutoavaliacao
+                  instanceId="checklist_autoavaliacao"
+                  title="Checklist de autoavaliação"
+                  subtitle="(Baseado na C1 e C4)"
                   userAnswers={userAnswers}
                   onAnswerChange={handleAnswerChange}
+                  items={[
+                    {
+                      id: 'titulo',
+                      label:
+                        'Meu título desperta o interesse do leitor e tem relação com o tema?',
+                    },
+                    {
+                      id: 'fato_cotidiano',
+                      label: 'O texto parte de um fato ou observação do cotidiano?',
+                    },
+                    {
+                      id: 'tom_coloquial',
+                      label:
+                        'Consegui manter um tom coloquial sem desrespeitar as regras essenciais da norma-padrão?',
+                    },
+                    {
+                      id: 'sinonimos',
+                      label:
+                        'Utilizei sinônimos e pronomes para evitar a repetição de palavras como “tecnologia”, “celular” ou “internet”?',
+                    },
+                    {
+                      id: 'conectivos',
+                      label:
+                        'Usei conectivos variados (mas, portanto, além disso, todavia) para ligar minhas ideias e parágrafos?',
+                    },
+                    {
+                      id: 'encerramento',
+                      label:
+                        'O encerramento do meu texto traz uma reflexão ou fechamento claro sobre o que foi narrado?',
+                    },
+                  ]}
+                />
+                <div style={{ border: '2px solid #8c2f88', padding: '10px', borderRadius: '5px' }}>
+                  <p className="mb-4 indent-6">
+                    Nesta produção, o mais
+                    importante é o seu
+                    “olhar”. Procure enxergar
+                    além da tela e conte
+                    uma história que só você
+                    poderia contar sobre a
+                    sua geração e o mundo
+                    digital. Sua produção
+                    será avaliada conforme
+                    a estrutura do gênero,
+                    a adequação ao tema
+                    e o uso expressivo dos
+                    recursos de coesão
+                    estudados.
+                  </p>
+
+                </div>
+                <RascunhoTexto instanceId="producaoTexto4" />
+                <Pagination currentPage={15} />
+                <h2>Proposta de Produção</h2>
+                <h3>Olhar crônico sobre a tecnologia</h3>
+                <p className="mb-4 indent-6">
+                  Chegou a hora de você exercitar sua capacidade de observação e escrita. Imagine que você é um dos membros
+                  do grêmio estudantil da sua escola, responsável pela curadoria e produção de conteúdo para o jornal impresso
+                  e digital da instituição. Ao notar como a tecnologia está onipresente nos corredores, nas salas de aula e até nos
+                  intervalos, você sugeriu como pauta do mês a escrita de uma crônica que aborde o impacto das tecnologias
+                  digitais na vida dos adolescentes. O objetivo é criar um texto que gere reflexão e identificação entre seus colegas, tratando o tema de forma criativa e bem estruturada.
+                </p>
+                <p className="mb-4 indent-6" style={{ color: '#80298F', fontWeight: 'bold', fontSize: '20px' }}>Instruções para a escrita:</p>
+
+                <ol className="list-decimal marker:text-[#80298F] ml-6">
+                  <li> O texto deve ter no mínimo 20 e no máximo 30 linhas e possuir um título atraente.  </li>
+                  <li> A abordagem é livre, mas deve obrigatoriamente estar relacionada ao uso de tecnologias digitais
+                    na sociedade, focando em algo próximo do cotidiano escolar (ex: o uso do celular durante as aulas,
+                    a pressão por curtidas, os grupos de mensagem da turma, o impacto das fakes news no ambiente
+                    estudantil etc.).  </li>
+                  <li> Utilize a primeira pessoa (se quiser um tom mais pessoal/relato) ou a terceira pessoa (para um tom de
+                    observador).  </li>
+                  <li> Empregue a modalidade padrão da língua portuguesa, mas mantenha a leveza e a proximidade
+                    características do gênero.  </li>
+                  <li> Utilize uma variedade de conectivos e elementos de referência para garantir a coesão e evitar
+                    repetições.  </li>
+                </ol>
+                <GabaritoOnlineBanner
+                  href={TUTORIAL_URL}
+                  items={[
+                    {
+                      prefix: '4.',
+                      text: 'Accum eostet, aut autat posae reicienim estio. Ut utaepero quundae.',
+                    },
+                    {
+                      prefix: '2.',
+                      text: 'Icipiet dolum idunt eturiatus experiti aceatem acesciducius eium rem que.',
+                    },
+                  ]}
                 />
 
+                <Pagination currentPage={16} />
+                <h2>Rumo à <strong>Redação Nota 1000</strong></h2>
+                <RascunhoTexto instanceId="producaoTexto1" />
+                <ProducaoTextoFinal />
               </>
             }
           />

@@ -80,6 +80,7 @@ function RascunhoTexto({
           className="object-contain"
         />
         <h2
+          className="!border-l-0 !pl-0 !mb-0"
           style={{
             color: '#0E3B5D',
             fontFamily: 'hwt-artz',
