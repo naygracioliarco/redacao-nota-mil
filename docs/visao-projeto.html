@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visão do Projeto — D.N.E.E.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+      .prose h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin: 1.5rem 0 0.75rem;
+      }
+      .prose h2 {
+        font-size: 1.35rem;
+        font-weight: 700;
+        margin: 1.35rem 0 0.6rem;
+        border-bottom: 1px solid #e5e7eb;
+        padding-bottom: 0.35rem;
+      }
+      .prose h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 1.1rem 0 0.45rem;
+      }
+      .prose p,
+      .prose li {
+        line-height: 1.65;
+        margin-bottom: 0.5rem;
+      }
+      .prose ul {
+        list-style: disc;
+        padding-left: 1.35rem;
+        margin-bottom: 0.75rem;
+      }
+      .prose ol {
+        list-style: decimal;
+        padding-left: 1.35rem;
+        margin-bottom: 0.75rem;
+      }
+      .prose table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+        font-size: 0.925rem;
+      }
+      .prose th,
+      .prose td {
+        border: 1px solid #e5e7eb;
+        padding: 0.55rem 0.75rem;
+        text-align: left;
+        vertical-align: top;
+      }
+      .prose th {
+        background: #f3f4f6;
+        font-weight: 600;
+      }
+      .prose code {
+        background: #f3f4f6;
+        padding: 0.1rem 0.35rem;
+        border-radius: 0.25rem;
+        font-size: 0.875em;
+      }
+      .prose pre {
+        background: #111827;
+        color: #f9fafb;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        margin: 1rem 0;
+      }
+      .prose pre code {
+        background: transparent;
+        color: inherit;
+        padding: 0;
+      }
+      .prose blockquote {
+        border-left: 4px solid #80298f;
+        padding-left: 1rem;
+        color: #4b5563;
+        margin: 1rem 0;
+      }
+      .prose details {
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+        padding: 0.75rem 1rem;
+        margin: 1rem 0;
+        background: #fafafa;
+      }
+      .prose summary {
+        cursor: pointer;
+        font-weight: 600;
+        color: #80298f;
+      }
+      .prose .mermaid {
+        background: #fff;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin: 0.75rem 0;
+      }
+      .tab-active {
+        border-color: #80298f;
+        color: #80298f;
+        background: #faf5ff;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 min-h-screen text-gray-900">
+    <header class="bg-[#80298F] text-white shadow">
+      <div class="max-w-5xl mx-auto px-4 py-6">
+        <p class="text-sm uppercase tracking-wide text-purple-100">Fluxo D.N.E.E.</p>
+        <h1 class="text-2xl font-bold">Visão do Projeto</h1>
+        <p class="text-purple-100 mt-1">
+          Rumo à Redação Nota 1000 — SDD, Roadmap e Evidências
+        </p>
+      </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 py-6">
+      <nav class="flex flex-wrap gap-2 mb-6" role="tablist" aria-label="Documentação">
+        <button
+          type="button"
+          data-tab="sdd"
+          class="tab-btn tab-active px-4 py-2 rounded-lg border-2 border-transparent font-semibold bg-white shadow-sm"
+        >
+          📘 SDD
+        </button>
+        <button
+          type="button"
+          data-tab="roadmap"
+          class="tab-btn px-4 py-2 rounded-lg border-2 border-transparent font-semibold bg-white shadow-sm"
+        >
+          🗺️ Roadmap
+        </button>
+        <button
+          type="button"
+          data-tab="changelog"
+          class="tab-btn px-4 py-2 rounded-lg border-2 border-transparent font-semibold bg-white shadow-sm"
+        >
+          🧾 Changelog
+        </button>
+      </nav>
+
+      <section
+        id="panel"
+        class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 md:p-8 prose max-w-none"
+        aria-live="polite"
+      >
+        <p class="text-gray-500">Carregando documentação…</p>
+      </section>
+
+      <p class="text-xs text-gray-500 mt-4">
+        Abra este arquivo via servidor local ou Pages (fetch de Markdown relativo). Ex.:
+        <code class="bg-gray-200 px-1 rounded">npx serve docs</code>
+      </p>
+    </main>
+
+    <script>
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: "neutral",
+        securityLevel: "loose",
+      });
+
+      const FILES = {
+        sdd: "SDD.md",
+        roadmap: "ROADMAP.md",
+        changelog: "CHANGELOG_EVIDENCES.md",
+      };
+
+      const cache = {};
+      const panel = document.getElementById("panel");
+
+      marked.setOptions({ gfm: true, breaks: false });
+
+      function markdownToHtml(md) {
+        let html = marked.parse(md);
+        // Converte blocos mermaid gerados pelo marked (pre > code.language-mermaid)
+        html = html.replace(
+          /<pre><code class="language-mermaid">([\s\S]*?)<\/code><\/pre>/g,
+          (_, code) => {
+            const decoded = code
+              .replace(/&lt;/g, "<")
+              .replace(/&gt;/g, ">")
+              .replace(/&amp;/g, "&")
+              .replace(/&quot;/g, '"');
+            return `<div class="mermaid">${decoded}</div>`;
+          }
+        );
+        return html;
+      }
+
+      async function loadMarkdown(key) {
+        if (cache[key]) return cache[key];
+        const res = await fetch(FILES[key]);
+        if (!res.ok) {
+          throw new Error(`Falha ao carregar ${FILES[key]} (${res.status})`);
+        }
+        const text = await res.text();
+        cache[key] = text;
+        return text;
+      }
+
+      async function renderTab(key) {
+        panel.innerHTML = `<p class="text-gray-500">Carregando…</p>`;
+        try {
+          const md = await loadMarkdown(key);
+          panel.innerHTML = markdownToHtml(md);
+          await mermaid.run({ querySelector: "#panel .mermaid" });
+        } catch (err) {
+          panel.innerHTML = `
+            <div class="rounded-lg border border-red-200 bg-red-50 p-4 text-red-800">
+              <p class="font-semibold mb-1">Não foi possível carregar o Markdown.</p>
+              <p class="text-sm">${err.message}</p>
+              <p class="text-sm mt-2">Sirva a pasta <code>docs/</code> por HTTP (não abra o HTML via file://).</p>
+            </div>`;
+        }
+      }
+
+      function setActiveTab(key) {
+        document.querySelectorAll(".tab-btn").forEach((btn) => {
+          const active = btn.dataset.tab === key;
+          btn.classList.toggle("tab-active", active);
+        });
+        renderTab(key);
+      }
+
+      document.querySelectorAll(".tab-btn").forEach((btn) => {
+        btn.addEventListener("click", () => setActiveTab(btn.dataset.tab));
+      });
+
+      setActiveTab("sdd");
+    </script>
+  </body>
+</html>

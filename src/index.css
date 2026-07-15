@@ -13,21 +13,41 @@
   font-display: swap;
 }
 
-.chapter-content h3 {
-  border-left: 6px solid #80298F;
+.chapter-content h1 {
   padding-left: 14px;
   margin-bottom: 24px;
   color: #000;
   font-family: Filson Soft, Filson Pro, sans-serif;
-  font-size: 29px;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.chapter-content h2 {
+  border-left: 6px solid #80298F;
+  padding-left: 14px;
+  margin-bottom: 24px;
+  color: #1e293b;
+  font-family: Filson Soft, Filson Pro, sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.chapter-content h3 {
+  padding-left: 14px;
+  margin-bottom: 24px;
+  color: #80298F;
+  font-family: Filson Soft, Filson Pro, sans-serif;
+  font-size: 32px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
 }
 .chapter-content h4 {
-  color: #000000;
+  color: #8c2f88;
   font-family: 'hwt-artz', sans-serif;
-  font-size: 24px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -47,7 +67,7 @@
 
 /* Estilo para bullets coloridos nas subquestões */
 ul.question-subitems li::marker {
-  color: #BF3154;
+  color: #80298F;
 }
 
 /* Remove text-justify de todas as células de tabela */
